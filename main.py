@@ -42,6 +42,13 @@ def main():
         screen.fill("black")
         updatable.update(dt)
 
+        for shot in shots:
+            for asteroid in asteroids:
+                if shot.collides_with(asteroid):
+                    log_event("asteroid_shot")
+                    asteroid.kill()
+                    shot.kill()
+                    
         for asteroid in asteroids:
             if new_player.collides_with(asteroid):
                 log_event("player hit!")
