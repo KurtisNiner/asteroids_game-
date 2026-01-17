@@ -4,7 +4,9 @@ import pygame
 from constants import *
 from player import Player 
 from logger import log_state
-from asteroids import Asteroid
+from asteroids import(
+    Asteroid,
+)
 from shot import Shot
 
 def main():
@@ -46,9 +48,8 @@ def main():
             for asteroid in asteroids:
                 if shot.collides_with(asteroid):
                     log_event("asteroid_shot")
-                    asteroid.kill()
-                    shot.kill()
-                    
+                    asteroid.split()
+
         for asteroid in asteroids:
             if new_player.collides_with(asteroid):
                 log_event("player hit!")
